@@ -7,7 +7,7 @@ from cryptography.fernet import Fernet
 from passlib.hash import sha256_crypt
 from datetime import datetime
 
-app = Flask(__name__, static_folder=os.path.abspath('C:/Users/gokse/PycharmProjects/Gunluk/static'))
+app = Flask(__name__, static_folder=os.path.abspath('your/project/folder/static'))
 app.secret_key = 'super secret keysdhsagdhashsaj213hjhdsfkj6l43lks'
 
 db = PostgresqlDatabase(
