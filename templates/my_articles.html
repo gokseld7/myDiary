@@ -1,0 +1,66 @@
+{% extends "layout.html" %}
+{% set active_page = "my_articles" %}
+{% block main_content %}
+<link href="/static/css/jquery.dataTables.min.css" rel="stylesheet">
+<script src="/static/js/jquery.dataTables.min.js"></script>
+
+<div id="headerwrap">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6 col-lg-offset-3">
+        <h1>My Articles</h1>
+      </div>
+      <table id="my_articles_table" class="display" style="background-color: white;">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Author</th>
+            <th scope="col">Name</th>
+            <th scope="col">Last Edited</th>
+            <th scope="col">Edit</th>
+            <th scope="col">Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <!-- /container -->
+</div>
+<script>
+
+  function deleteItem(id) {
+    if (confirm("Are you sure?")) {
+        var data = {'id': id};
+        $.ajax(
+        {
+            type: "POST",
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            url: '/delete_article',
+            data: JSON.stringify(data),
+            success: function (data){}
+        });
+    }
+    return false;
+  }
+
+  $('#my_articles_table').DataTable( {
+        ajax: {
+            url: "/load_articles",
+            dataType: "json",
+            type: 'GET'
+        },
+        columns: [
+            { data: "ID" },
+            { data: "Author" },
+            { data: "Name" },
+            { data: "Last Edited" },
+            { data: "Edit" },
+            { data: "Delete" }
+        ],
+        select: true
+    } );
+</script>
+{% endblock %}

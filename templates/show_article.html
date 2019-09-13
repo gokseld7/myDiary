@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+{% set active_page = "my_articles" %}
+{% block main_content %}
+
+  <div id="headerwrap">
+    <div class="container">
+        <h3>{{article_name}}</h3>
+        <br>
+        <h4 style="word-wrap: break-word;">{{article_content|safe}}</h4>
+    </div>
+    <!-- /container -->
+  </div>
+
+{% endblock %}  
