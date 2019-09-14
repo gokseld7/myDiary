@@ -3,7 +3,7 @@ CREATE TABLE UsersDiary(
     username varchar(255),
     password varchar(500),
     email varchar(255),
-    key
+    key varchar(255)
 );
 
 CREATE TABLE Articles(
