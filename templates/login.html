@@ -4,10 +4,8 @@
 {% from "formhelpers.html" import render_field %}
 <div id="headerwrap">
   <div class="container">
-    <div class="row">
-      <div class="col-md-5"></div>
-      <div class="col-md-4">
-        <div class="card text-center" style="width: 18rem;">
+      <div>
+        <div class="card text-center" style="width: 18rem; margin:auto;">
           <div class="card-body">
             <h3>Login</h3>
             <form method=post>
@@ -19,9 +17,7 @@
             </form>
             {% include "messages.html" %}
           </div>
-        </div>
       </div>
-      <div class="col-md-3"></div>
     </div>
   </div>
   <!-- /container -->
