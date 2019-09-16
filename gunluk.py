@@ -15,7 +15,17 @@ db = PostgresqlDatabase(
     user='yourdbusername',
     password='yourdbpassword',
     host='localhost')
-db.connect()
+
+
+@app.before_request
+def _db_connect():
+    db.connect()
+
+    
+@app.teardown_request
+def _db_close(exc):
+    if not db.is_closed():
+        db.close()
 
 
 def login_required(f):
