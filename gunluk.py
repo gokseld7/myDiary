@@ -142,7 +142,7 @@ def save_article():
     from db_classes import Articles, UsersDiary
     article_name = request.form.get("name_of_article")
     article_content = request.form.get("article")
-    last_edit_date = datetime.now()
+    last_edit_date = datetime.now().strftime("%d/%m/%Y %H:%M")
     key = UsersDiary.get(UsersDiary.username == session["logged_in"]).key
     cipher_suite = Fernet(key)
     ciphered_content = cipher_suite.encrypt(article_content.encode())
@@ -179,7 +179,7 @@ def complete_edit_article():
     article_name = request.form.get("name_of_article")
     article_content = request.form.get("article")
     article_id = request.form.get("article_id")
-    last_edit_date = datetime.now()
+    last_edit_date = datetime.now().strftime("%d/%m/%Y %H:%M")
     key = UsersDiary.get(UsersDiary.username == session["logged_in"]).key
     cipher_suite = Fernet(key)
     ciphered_content = cipher_suite.encrypt(article_content.encode())
